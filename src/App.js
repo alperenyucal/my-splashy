@@ -1,26 +1,47 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Query from './components/Query';
+import Collections from './components/Collections';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Images />
     </div>
   );
 }
+
+
+function NavBar() {
+
+  return (
+    <div className="navbar">
+      <img src={logo}
+        className="app-logo"
+        alt="logo" />
+      <div className="navbar-query">
+        <Query />
+      </div>
+      <div className="navbar-collection">
+        <Collections />
+      </div>
+
+      <button className="navbar-search-button">
+        SEARCH
+      </button>
+    </div>
+  )
+}
+
+function Images() {
+
+  return (
+    <div>henlo again</div>
+  )
+}
+
+
 
 export default App;
