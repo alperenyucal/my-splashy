@@ -1,5 +1,6 @@
 import React from 'react';
-import "./Collections.css"
+import './Collections.css';
+import icon from './dropdown-icon.svg';
 
 
 export default function Collections() {
@@ -9,8 +10,9 @@ export default function Collections() {
       <div className="collections-shadow">
       </div>
       
-      <input className="collections">
-      </input>
+      <div className="collections">
+      </div>
+      <image src={icon} className="dropdown-icon"></image>
 
 
     </div>

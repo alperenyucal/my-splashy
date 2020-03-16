@@ -1,63 +1,24 @@
-.navbar {
+.image-container {
   width: 100%;
-  display: grid;
-  align-items: center;
-  background-color: #050417;
 }
 
-.app-logo {
-  width: 40px;
-  margin: 10px auto 5px auto;
+.image {
+  width: calc(100% - 20px);
+  margin: 8px;
 }
 
-.navbar-query {
-  height: 30px;
-  margin: 5px 10px 5px 10px;
-}
-
-.navbar-collection {
-  height: 30px;
-  margin: 5px 10px 5px 10px;
-}
-
-.navbar-search-button {
-  background: #2A2B8D;
-  border-radius: 25px;
-  border: none;
-  font-style: normal;
-  letter-spacing: 0.1em;
-  color: #FFFFFF;
-  min-height: 25px;
-  min-width: 100px;
-  margin: 10px;
+.column {
+  width: 100%
 }
 
 @media only screen and (min-width: 992px) {
-  /* For desktop and laptops: */
-  .navbar {
-    height: 100px;
-    grid-template-columns: 10% 30% 30% 30%;
+  .image-container {
+    width: 65%;
+    margin: auto;
+    margin-top: 140px;
   }
-  .navbar-search-button {
-    width: calc(100% - 100px);
-    max-width: 240px;
-    height: 50px;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 19px;
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-  .app-logo {
-    margin: 10px auto 10px 40px;
-    width: 50px;
-  }
-  .navbar-query {
-    margin: 20px;
-    height: 50px;
-  }
-  .navbar-collection {
-    margin: 20px;
-    height: 50px;
+  .column {
+    width: 32%;
+    float: left;
   }
 }
