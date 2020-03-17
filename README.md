@@ -1,9 +1,19 @@
 ## Introduction
 
 My Splashy is an unofficial client of [Unsplash](https://unsplash.com) made with react.
-Search images globally or in collections using the top navigation bar.
+You can search images globally or in collections using the top navigation bar.
 
 Demo is available at [my-splashy.herokuapp.com](https://my-splashy.herokuapp.com).
+
+Use
+
+### `yarn`
+
+or
+
+### `npm init`
+
+to setup the project.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
