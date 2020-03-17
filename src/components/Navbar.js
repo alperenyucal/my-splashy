@@ -4,7 +4,7 @@ import Collections from './Collections';
 import './Navbar.css'
 import logo from './logo.svg';
 
-
+// Top navigation bar
 export default function Navbar({ queryHandler, collectionHandler, onSubmit }) {
 
   return (

@@ -4,14 +4,32 @@ import icon from './dropdown-icon.svg';
 import { API_ACCESS_KEY } from '../settings';
 
 
-
+// Collections component
 export default function Collections({ handler }) {
 
+  // focus state of collection input field.
   let [isFocused, setFocused] = useState(false);
+  
+  // collection search results
   let [results, setResults] = useState([]);
+  
+  // inserted value
+  let [value, setValue] = useState("");
 
+  // selected value from results
+  let [selected, setSelected] = useState(null);
+
+  // if inserted value is empty string, clears selected state
+  useEffect(() => {
+    if (value === "") {
+      setSelected(null);
+      handler(selected);
+    }
+  })
+
+  // fetches the search results
   let searchHandler = e => {
-    handler(e);
+    setValue(e.target.value);
 
     fetch('https://api.unsplash.com/search/collections?query=' + e.target.value + '&page=1&per_page=5', {
       method: 'GET',
@@ -21,21 +39,21 @@ export default function Collections({ handler }) {
     })
       .then(r => r.json())
       .then(data => {
-        setResults(data.results.map(item => item.title));
+        setResults(data.results.map(item => { return { id: item.id, title: item.title } }));
       })
-
-    //setResults(["ali", "veli", "deli"]);
 
   }
 
+  // render
   return (
     <div className="wrapper-collections">
       <div className="collections-shadow"></div>
 
       <input
         className="collections-input"
+        value={value}
         placeholder="Collections"
-        style={isFocused ? {
+        style={isFocused && results.length !== 0 ? {
           borderBottomLeftRadius: "0",
           borderBottomRightRadius: "0"
         } : null}
@@ -45,7 +63,8 @@ export default function Collections({ handler }) {
         }}
         onBlur={e => {
           e.preventDefault();
-          setFocused(false);
+          // a little hack to make results clickable.
+          setTimeout(() => { setFocused(false) }, 120);
         }}
         onChange={searchHandler}
       >
@@ -55,8 +74,19 @@ export default function Collections({ handler }) {
 
       {isFocused ?
         <div className="collections-results">
-          {results.map(item => <div className="collections-item">{item}</div>)}
-
+          {results.map((item, i) => (
+            <div
+              key={i}
+              onClick={() => {
+                setValue(item.title);
+                setSelected(item);
+                setFocused(false);
+                handler(item);
+              }}
+              className="collections-item">
+              {item.title}
+            </div>)
+          )}
         </div> : null}
 
     </div>
