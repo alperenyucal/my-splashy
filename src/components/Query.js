@@ -7,7 +7,7 @@ export default function Query({handler}) {
 return(
   <div className="wrapper-query">
 
-    <input type="text" className="query" onChange={handler}></input>
+    <input placeholder="Query" type="text" className="query" onChange={handler}></input>
 
   </div>
 )

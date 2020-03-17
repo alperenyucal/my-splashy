@@ -2,25 +2,29 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-
-
-// I'm aware these keys shouldn't be in the client application.
-const API_ACCESS_KEY = "yT956ENR5lDItvK5E3z8NQyLTGLoVu3gAuYVpf6Jl00";
-const API_SECRET_KEY = "id4NmkZREvWYmdoKaMU-836gBiuUIXuMjERUOne8PhQ";
+import { API_ACCESS_KEY } from './settings';
 
 
 function App() {
 
-  let [queryValue, setQueryValue] = useState(null);
-  let [collectionValue, SetCollectionValue] = useState(null);
+  let [queryValue, setQueryValue] = useState("");
+  let [collectionValue, SetCollectionValue] = useState("");
   let [imageResults, setImageResults] = useState([]);
 
   let queryHandler = e => {
     setQueryValue(e.target.value);
   }
 
-  useEffect(() => {
-    fetch('https://api.unsplash.com/photos?page=1&per_page=12 ', {
+  let collectionHandler = e => {
+    SetCollectionValue(e.target.value);
+  }
+
+  let submitHandler = e => {
+    e.preventDefault();
+    let url = 'https://api.unsplash.com/search/photos?query=' + queryValue + '&page=1&per_page=12';
+
+
+    fetch(url, {
       method: 'GET',
       headers: {
         'Authorization': 'Client-ID ' + API_ACCESS_KEY
@@ -29,14 +33,28 @@ function App() {
       .then(r => r.json())
       .then(data => {
 
-        setImageResults(data.map(item => item.urls.small));
+        setImageResults(data.results.map(item => item.urls.small));
       })
-
-  }, []);
-
+  }
+  /*
+    useEffect(() => {
+      fetch('https://api.unsplash.com/photos?page=1&per_page=12 ', {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Client-ID ' + API_ACCESS_KEY
+        }
+      })
+        .then(r => r.json())
+        .then(data => {
+  
+          setImageResults(data.map(item => item.urls.small));
+        })
+  
+    }, []);
+  */
   return (
     <div className="App">
-      <Navbar queryHandler={queryHandler} />
+      <Navbar queryHandler={queryHandler} collectionHandler={collectionHandler} onSubmit={submitHandler} />
       <Images imageUrls={imageResults} />
     </div>
   );

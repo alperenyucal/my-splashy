@@ -8,7 +8,7 @@ import logo from './logo.svg';
 export default function Navbar({ queryHandler, collectionHandler, onSubmit }) {
 
   return (
-    <div className="navbar">
+    <form onSubmit={onSubmit} className="navbar">
       <img src={logo}
         className="app-logo"
         alt="logo" />
@@ -18,9 +18,9 @@ export default function Navbar({ queryHandler, collectionHandler, onSubmit }) {
       <div className="navbar-collection">
         <Collections handler={collectionHandler} />
       </div>
-      <button onClick={onSubmit} className="navbar-search-button">
+      <button className="navbar-search-button">
         SEARCH
       </button>
-    </div>
+    </form>
   )
 }

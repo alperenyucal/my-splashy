@@ -35,18 +35,12 @@
   margin: 10px auto 10px auto;
 }
 
-.navbar-extend {
-  width: 5px;
-  visibility: hidden;
-}
-
 @media only screen and (min-width: 992px) {
   /* For desktop and laptops: */
   .navbar {
     height: 100px;
     grid-template-columns: 10% 30% 30% 30%;
   }
-
   .navbar-search-button {
     width: calc(100% - 100px);
     max-width: 240px;
@@ -57,12 +51,10 @@
     margin-left: 40px;
     margin-right: 40px;
   }
-
   .app-logo {
     margin: 10px auto 10px 40px;
     width: 60px;
   }
-
   .navbar-query {
     margin: 20px;
     height: 50px;
@@ -70,8 +62,5 @@
   .navbar-collection {
     margin: 20px;
     height: 50px;
-  }
-  .navbar-extend {
-    visibility: hidden;
   }
 }
